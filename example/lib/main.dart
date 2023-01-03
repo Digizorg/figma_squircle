@@ -1,5 +1,4 @@
 import 'package:figma_squircle/figma_squircle.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,8 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Figma Squircles',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          inputDecorationTheme: InputDecorationTheme()),
       home: const HomePage(),
     );
   }
@@ -67,6 +66,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          FormExample(),
           CompareExample(),
           EditorExample(),
           AnimatedExample(),
@@ -234,6 +234,71 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class FormExample extends StatelessWidget {
+  const FormExample({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Input with Regular Border'),
+            SizedBox(height: 16),
+            TextFormField(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: Colors.grey,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: Colors.grey,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Text('Input with Squircle Border'),
+            SizedBox(height: 16),
+            TextFormField(
+              decoration: InputDecoration(
+                enabledBorder: SmoothOutlineInputBorder(
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: Colors.grey,
+                  ),
+                  borderRadius: SmoothBorderRadius(
+                    cornerRadius: 12,
+                    cornerSmoothing: 1,
+                  ),
+                ),
+                focusedBorder: SmoothOutlineInputBorder(
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: Colors.grey,
+                  ),
+                  borderRadius: SmoothBorderRadius(
+                    cornerRadius: 12,
+                    cornerSmoothing: 1,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
