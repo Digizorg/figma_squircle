@@ -2,6 +2,7 @@ name: figma_squircle
 description: A new Flutter package project.
 version: 0.5.5
 homepage: https://github.com/aloisdeniel/figma_squircle
+publish_to: https://dart.cloudsmith.io/digizorg/default/
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
